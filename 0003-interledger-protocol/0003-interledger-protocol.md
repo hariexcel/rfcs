@@ -1,6 +1,6 @@
 ---
 title: The Interledger Protocol (ILP)
-draft: 5
+draft: 6
 ---
 # Interledger Protocol (ILP)
 
@@ -316,6 +316,20 @@ Relative errors indicate that the payment did not have enough of a margin in ter
 | **R02** | **Insufficient Timeout** | The connector could not forward the payment, because the timeout was too low to subtract its safety margin. The sender MAY try again with a higher expiry, but they SHOULD NOT do this indefinitely or a malicious connector could cause them to tie up their money for an unreasonably long time. |
 | **R99** | **Application Error** | Reserved for application layer protocols. Applications MAY use names other than `Application Error`. |
 
+### ILP Fulfillment Format
+
+Here is a summary of the fields in the ILP fulfillment format:
+
+| Field | Type | Short Description |
+|:--|:--|:--|
+| data | OCTET STRING | Transport layer fulfillment data |
+
+#### data
+
+    OCTET STRING (SIZE(0..32767))
+
+Arbitrary data that is attached to the fulfillment. The contents are defined by the transport layer protocol.
+
 ## Appendix A: ASN.1 Module
 
 See [ASN.1 Definitions](../asn1/InterledgerProtocol.asn).
@@ -335,5 +349,7 @@ The following initial entries should be added to the Interledger Header Type reg
 | 5 | [ILQP][] | QuoteBySourceAmountResponse |
 | 6 | [ILQP][] | QuoteByDestinationAmountRequest |
 | 7 | [ILQP][] | QuoteByDestinationAmountResponse |
+| 8 | [ILP](#ilp-error-format) | IlpError |
+| 9 | [ILP](#ilp-fulfillment-format) | IlpFulfillment |
 
 [ILQP]: ../0008-interledger-quoting-protocol/
