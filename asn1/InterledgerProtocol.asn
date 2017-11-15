@@ -12,7 +12,7 @@ IMPORTS
     FROM InterledgerTypes
 ;
 
-BestEffortPaymentData ::= SEQUENCE {
+ForwardedPaymentData ::= SEQUENCE {
     -- Destination ILP Address
     account Address,
     -- Information for recipient (transport layer information)
