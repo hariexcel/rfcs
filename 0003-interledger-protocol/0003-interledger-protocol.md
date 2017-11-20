@@ -318,11 +318,17 @@ Relative errors indicate that the payment did not have enough of a margin in ter
 
 ### ILP Fulfillment Format
 
-Here is a summary of the fields in the ILP fulfillment format:
+This type of ILP packet is attached to a fulfillment and carries additional transport layer information that the sender may use to make further payments. Here is a summary of the fields in the ILP fulfillment format:
 
 | Field | Type | Short Description |
 |:--|:--|:--|
 | data | OCTET STRING | Transport layer fulfillment data |
+
+#### Example
+
+| length | data | extensions |
+|:--|:--|:--|:--|
+| 3 | 4 16 65 | 0 |
 
 #### data
 
